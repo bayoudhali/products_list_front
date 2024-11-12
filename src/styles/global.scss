@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "RobotoBold";
+    src: url(../fonts/Roboto-Bold.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "RobotoRegular";
+    src: url(../fonts/Roboto-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "RobotoMedium";
+    src: url(../fonts/Roboto-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "RobotoLight";
+    src: url(../fonts/Roboto-Light.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  body {
+    margin: 0px 0px 8px 0px;
+  }
+  nextjs-portal {
+    display: none;
+  }
+  
+  :root {
+    // colors
+    --primaryColor: #101828;
+    --primaryLightColor: #667085;
+    --secondaryColor: #344054;
+    --secondaryColorLight: #808080;
+    --green: #36574b;
+    --blueMeduim: #5d7cae;
+    --black: #000000;
+    --greey: #f0f0f0;
+  
+    // Font family
+    --font-roboto-bold: "RobotoBold";
+    --font-roboto-meduim: "RobotoMedium";
+    --font-roboto-regular: "RobotoRegular";
+    --font-roboto-light: "RobotoLight";
+  }
+  
+  // declare theme variables
+  
+  // Colors
+  $primaryColor: var(--primaryColor);
+  $primaryLightColor: var(--primaryLightColor);
+  $secondaryColor: var(--secondaryColor);
+  $secondaryColorLight: var(--secondaryColorLight);
+  $green: var(--green);
+  $blueMeduim: var(--blueMeduim);
+  $black: var(--black);
+  $greey: var(--greey);
+  
+  // Font family
+  $fontBold: var(--font-roboto-bold);
+  $fontMedium: var(--font-roboto-meduim);
+  $fontRegular: var(--font-roboto-regular);
+  $fontLight: var(--font-roboto-light);
+  

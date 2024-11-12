@@ -1,0 +1,13 @@
+.navbar-container {
+  &.css-l0g91r-MuiPaper-root-MuiAppBar-root {
+    background-color: #f6f6f6;
+    box-shadow: none;
+  }
+  & .css-1z06sms-MuiButtonBase-root-MuiButton-root {
+    color: #555555;
+    text-transform: capitalize;
+    margin-left: 20px;
+    font-family: $fontMedium;
+    font-size: 15px;
+  }
+}

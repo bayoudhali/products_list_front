@@ -1,0 +1,15 @@
+.container-tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.block-tooltip {
+  position: fixed;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
+}
