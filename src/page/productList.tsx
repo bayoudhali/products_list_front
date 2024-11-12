@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../components/menus/navbar";
 import {
   Box,
@@ -10,7 +10,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -19,12 +18,21 @@ import Edit from "../images/pencil.svg";
 import Delete from "../images/trash.svg";
 import DefaultButton from "../components/buttons/defaultButton";
 import TooltipComponent from "../components/Tooltips/tooltipComponent";
+import { useGlobalContext } from "../context/useGlobalContext";
+import { observer } from "mobx-react";
 
-function ProductList() {
+const ProductList = observer(() => {
+  const { productStore } = useGlobalContext();
+  useEffect(() => {
+    if (productStore.productList.length === 0) {
+      productStore.getListProductsStore();
+    }
+  }, [productStore]);
+
   return (
     <div>
       <NavBar />
-      <Box className="conatiner-team-mg">
+      <Box className="conatiner-product-mg">
         <h4>
           <span> Product List</span>
         </h4>
@@ -43,12 +51,12 @@ function ProductList() {
               fullWidth
             />
           </div>
-          <div className="button-invitation">
+          <div className="button-add-product">
             <DefaultButton text={"Add Product"} onClick={() => console.log()} />
           </div>
         </Box>
         <Box>
-          <TableContainer component={Paper} className="table-mg">
+          <TableContainer className="holder">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -56,48 +64,43 @@ function ProductList() {
                   <TableCell align="left">Category</TableCell>
                   <TableCell align="left">CreatedBy</TableCell>
                   <TableCell align="right">UpdatedBy</TableCell>
+                  <TableCell align="right">Action</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                <TableRow
-                  //   key={index}
-                  sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
-                  }}
-                >
-                  <TableCell scope="row">
-                    <TooltipComponent
-                      tooltipText={"This a description"}
-                      child={<p>EFE</p>}
-                    ></TooltipComponent>
-                  </TableCell>
-                  <TableCell align="left">
-                    <p>eff</p>
-                  </TableCell>
+              <TableBody className="table-mg ">
+                {productStore.productList.map((product, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{
+                      "&:last-child td, &:last-child th": { border: 0 },
+                    }}
+                  >
+                    <TableCell scope="row">
+                      <TooltipComponent
+                        tooltipText={product.description}
+                        child={<p>{product.name}</p>}
+                      ></TooltipComponent>
+                    </TableCell>
+                    <TableCell align="left">
+                      <p>{product.category}</p>
+                    </TableCell>
 
-                  <TableCell align="left">
-                    <p>eff</p>
-                  </TableCell>
-                  <TableCell align="right">
-                    <IconButton size="large" className="button-action-mg">
-                      <img src={Edit} width={15} height={15} alt="Edit" />
-                    </IconButton>
-                    <IconButton size="large" className="button-action-mg">
-                      <img src={Delete} width={15} height={15} alt="Delete" />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-
-                {/* <TableRow
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                }}
-              >
-                <TableCell scope="row"></TableCell>
-                <TableCell scope="row"></TableCell>
-                TableCell scope="row">No data</TableCell>
-                <TableCell scope="row"></TableCell>
-              </TableRow> */}
+                    <TableCell align="left">
+                      <p>{product.updatedBy}</p>
+                    </TableCell>
+                    <TableCell align="left">
+                      <p>{product.updatedBy}</p>
+                    </TableCell>
+                    <TableCell align="right">
+                      <IconButton size="large" className="button-action-mg">
+                        <img src={Edit} width={15} height={15} alt="Edit" />
+                      </IconButton>
+                      <IconButton size="large" className="button-action-mg">
+                        <img src={Delete} width={15} height={15} alt="Delete" />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
@@ -105,6 +108,6 @@ function ProductList() {
       </Box>
     </div>
   );
-}
+});
 
 export default ProductList;

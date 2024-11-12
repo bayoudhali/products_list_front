@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-const pages = ["Planning", "Programs", "Storefront", "Coupons", "Clients"];
+const pages = ["Dashboard", "Categories", "Products", "Clients"];
 const settings = ["Logout"];
 
 const NavBar = () => {
@@ -42,9 +42,7 @@ const NavBar = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-              >
-                {/* <MenuIcon /> */}
-              </IconButton>
+              ></IconButton>
               <Menu
                 id="menu-appbar"
                 anchorOrigin={{
